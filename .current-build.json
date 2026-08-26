@@ -1,7 +1,7 @@
 {
+  "commit": "44194d821a6dc680b5c1536f398eaa8de4a83af8",
+  "run_id": 33021739358,
   "status": "running",
-  "commit": "830f2e3cd39b0181dff9e84758fdf06079f4d584",
-  "run_id": 33021683983,
-  "version": "0.5.8",
-  "artifact": "Book-Capture-AI-v0.5.8-Windows"
+  "artifact": "Book-Capture-AI-v0.6.0-Windows",
+  "version": "0.6.0"
 }
