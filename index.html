@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Book Capture AI</title>
+<meta name="description" content="Windows向け電子書籍キャプチャ・PDF/OCR支援ツール Book Capture AI">
+<style>
+:root{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP",sans-serif;color:#172033;background:#f4f7fb}*{box-sizing:border-box}body{margin:0}.wrap{max-width:960px;margin:auto;padding:28px 18px 56px}.hero,.card{background:#fff;border:1px solid #dde5f0;border-radius:22px;box-shadow:0 12px 35px rgba(37,55,88,.08)}.hero{padding:34px}.eyebrow{color:#2b6bd8;font-weight:800}.hero h1{font-size:clamp(34px,7vw,64px);margin:.2em 0}.lead{font-size:1.14rem;line-height:1.8;color:#48566f;max-width:760px}.badges{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.badge{background:#edf4ff;color:#2459a6;border-radius:999px;padding:7px 11px;font-weight:700;font-size:.9rem}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}.btn{display:inline-block;text-decoration:none;border-radius:13px;padding:13px 17px;font-weight:800;background:#2468d7;color:#fff}.btn.secondary{background:#eef3fa;color:#233b62}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:18px}.card{padding:21px}.card h2{font-size:1.12rem;margin-top:0}.card p{line-height:1.65;color:#536078}.notice{margin-top:18px;padding:16px 18px;border-left:5px solid #f0a429;background:#fff8e8;border-radius:10px;line-height:1.65}.flow{font-weight:800;line-height:2;color:#2b3954}.footer{margin-top:26px;color:#69758b;font-size:.9rem;line-height:1.7}@media(max-width:600px){.hero{padding:24px}.actions .btn{width:100%;text-align:center}}
+</style>
+</head>
+<body>
+<main class="wrap">
+<section class="hero">
+<div class="eyebrow">Windows Desktop Tool · v0.6.0</div>
+<h1>Book Capture AI</h1>
+<p class="lead">画面に通常表示できる電子書籍を、自動ページ送りでキャプチャし、見開き分割・ヘッダー/フッター除去・PDF生成・日本語OCRまでローカルPCで処理します。</p>
+<div class="badges"><span class="badge">Windows</span><span class="badge">OCR内蔵</span><span class="badge">見開き分割</span><span class="badge">ローカル処理</span></div>
+<div class="actions">
+<a class="btn" href="manual.html">使い方を見る</a>
+<a class="btn secondary" href="https://github.com/branzfamily01/book-capture-ai/actions/workflows/build-windows.yml">Windows最新版を取得</a>
+<a class="btn secondary" href="https://github.com/branzfamily01/book-capture-ai">GitHub</a>
+</div>
+</section>
+<section class="grid">
+<article class="card"><h2>最短の流れ</h2><div class="flow">本を開く → 範囲を選ぶ → キャプチャ開始 → PDF/OCR完成</div></article>
+<article class="card"><h2>見開き対応</h2><p>1回の見開きスクリーンショットを左右2ページへ分割。日本語書籍は右→左、洋書は左→右を選べます。</p></article>
+<article class="card"><h2>固まらない後処理</h2><p>キャプチャ後の分割・PDF・OCRはバックグラウンドで実行。画面には処理段階と進捗を表示します。</p></article>
+<article class="card"><h2>OCR内蔵</h2><p>Tesseract OCRと日本語/英語モデルをWindows配布版へ同梱。別途OCRソフトを入れずに検索可能PDFとTXTを作れます。</p></article>
+</section>
+<div class="notice"><strong>利用範囲について：</strong> DRM解除、暗号化解除、キャプチャ防止機能の回避は行いません。通常表示できるコンテンツを、著作権・利用規約等で認められる範囲で使用してください。</div>
+<p class="footer">Book Capture AI はWindowsデスクトップアプリです。このGitHub Pagesは公開案内・マニュアル用ページです。</p>
+</main>
+</body>
+</html>
