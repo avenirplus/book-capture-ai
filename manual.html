@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Book Capture AI 使い方</title>
+<style>
+:root{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP",sans-serif;color:#1d2638;background:#f4f7fb;line-height:1.75}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0}.top{position:sticky;top:0;z-index:5;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:1px solid #dfe6ef}.topin{max-width:900px;margin:auto;padding:10px 16px;display:flex;gap:8px;align-items:center}.top a{padding:9px 12px;border-radius:10px;text-decoration:none;font-weight:800;color:#244f91;background:#edf4ff}.top .spacer{flex:1}.wrap{max-width:900px;margin:auto;padding:24px 16px 70px}.hero,.card{background:#fff;border:1px solid #dfe6ef;border-radius:20px;box-shadow:0 8px 26px rgba(35,55,90,.06)}.hero{padding:26px}.hero h1{font-size:clamp(30px,7vw,48px);margin:.1em 0}.hero p{color:#536078}.quick{background:#eaf4ff;border:2px solid #87b8f5;margin-top:16px}.card{padding:22px;margin-top:16px}.card h2{margin-top:0;font-size:1.35rem}.card h3{margin-top:1.5em}.step{display:grid;grid-template-columns:44px 1fr;gap:12px;margin:14px 0}.num{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:#2468d7;color:#fff;font-weight:900}.button{display:inline-block;background:#eef3f9;border:1px solid #cad6e5;border-radius:8px;padding:2px 8px;font-weight:800;color:#24324b}.ok{background:#edf9f0;border-left:5px solid #3b9a55;padding:13px 15px;border-radius:9px}.warn{background:#fff6e6;border-left:5px solid #ef9c22;padding:13px 15px;border-radius:9px}.diagram{overflow:auto;background:#f7f9fc;border-radius:14px;padding:16px;font-weight:800;text-align:center;line-height:2}.toc{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px}.toc a{text-decoration:none;color:#2459a6;background:#f0f5fb;border-radius:10px;padding:10px 12px;font-weight:700}.table{width:100%;border-collapse:collapse}.table th,.table td{padding:10px;border-bottom:1px solid #e5eaf1;text-align:left;vertical-align:top}.table th{width:34%;color:#314c75}.small{font-size:.92rem;color:#637087}details{border-top:1px solid #e5eaf1;padding:12px 0}summary{font-weight:800;cursor:pointer}.return{display:block;text-align:center;margin-top:20px;padding:14px;background:#2468d7;color:#fff;border-radius:12px;text-decoration:none;font-weight:900}@media(max-width:600px){.card,.hero{padding:18px}.table,.table tbody,.table tr,.table th,.table td{display:block}.table th{width:auto;padding-bottom:2px}.table td{padding-top:2px}.topin{font-size:.88rem}}
+</style>
+</head>
+<body>
+<nav class="top"><div class="topin"><a href="#quick">まずこれだけ</a><a href="#trouble">困ったとき</a><span class="spacer"></span><a href="index.html">案内ページ</a></div></nav>
+<main class="wrap">
+<section class="hero" id="top"><div class="small">Book Capture AI v0.6.0 · 公式HTMLマニュアル</div><h1>Book Capture AI の使い方</h1><p>Windowsで表示している電子書籍を、ページ送りしながら画像として保存し、PDF・検索可能PDF・OCRテキストにするアプリです。見開きの左右分割や、Kindleのヘッダー/フッター除去もできます。</p><div class="warn"><strong>大切：</strong> DRM解除やキャプチャ防止の回避はしません。通常表示できるコンテンツを、権利・利用規約で認められる範囲で使用してください。</div></section>
+<section class="card quick" id="quick"><h2>まずこれだけ</h2>
+<div class="step"><div class="num">1</div><div><strong>Kindle for Webなどで本を開く。</strong><br>Book Capture AIで <span class="button">ウィンドウ更新</span> を押し、本を表示しているEdge/Chrome等を選びます。</div></div>
+<div class="step"><div class="num">2</div><div><span class="button">画面範囲を選択</span> を押し、保存したい本の範囲をドラッグします。見開きなら左右2ページ全体を囲います。</div></div>
+<div class="step"><div class="num">3</div><div><span class="button">キャプチャ開始</span> を押します。表示された待ち時間の間に電子書籍へ戻ります。撮影終了後はPDF/OCRがバックグラウンドで進みます。</div></div>
+<div class="ok"><strong>最初は10画面だけ</strong>で試すのがおすすめです。切れ・ページ順・OCRを確認してから長い本へ進めます。</div></section>
+<section class="card"><h2>目次</h2><div class="toc"><a href="#what">このアプリは何をする？</a><a href="#screen">画面の見方</a><a href="#how">使い方</a><a href="#features">できること</a><a href="#data">データについて</a><a href="#mistake">間違えたとき</a><a href="#trouble">困ったとき</a><a href="#phone">スマホ</a><a href="#terms">用語集</a><a href="#detail">詳しく知りたい人向け</a></div></section>
+<section class="card" id="what"><h2>① このアプリは何をするもの？</h2><div class="diagram">電子書籍を表示<br>↓<br>自動ページ送り ＋ スクリーンショット<br>↓<br>必要なら上下を切る・見開きを2ページに分ける<br>↓<br>PDF ＋ 検索可能PDF ＋ OCRテキスト</div><p>本のデータそのものを取り出すのではなく、<strong>Windows画面に普通に表示されている範囲</strong>を保存します。</p></section>
+<section class="card" id="screen"><h2>③ 画面の見方</h2><table class="table">
+<tr><th>電子書籍ウィンドウ</th><td>どのEdge/Chrome/電子書籍アプリへページ送りをするか選びます。</td></tr>
+<tr><th>キャプチャ範囲</th><td>実際に画像として保存する長方形です。</td></tr>
+<tr><th>保存名</th><td>完成PDFや保存フォルダの名前に使います。</td></tr>
+<tr><th>ページ送り</th><td><span class="button">← 左キー</span> / <span class="button">→ 右キー</span> / Space / PageDown から選びます。</td></tr>
+<tr><th>撮影終了方法</th><td><strong>Smart Guard</strong>で終わりを判定するか、<strong>固定枚数</strong>まで必ず撮るかを選びます。</td></tr>
+<tr><th>見開き自動分割</th><td>1枚の見開き画像を、左右の1ページずつへ分けます。</td></tr>
+<tr><th>KindleクリーンPDF</th><td>上の書名表示や下の位置表示を、指定した割合だけ切ります。</td></tr>
+<tr><th>画像PDF</th><td>画像だけで作る基本PDFです。</td></tr>
+<tr><th>検索可能PDF</th><td>画像の裏側にOCR文字を持つPDFです。文字検索ができます。</td></tr>
+<tr><th>OCRテキスト(.txt)</th><td>認識した文章だけをテキストファイルにも保存します。</td></tr>
+<tr><th>？ 使い方</th><td>このマニュアルを1タップで開きます。</td></tr>
+</table></section>
+<section class="card" id="how"><h2>④ 使い方</h2>
+<h3>A. 最初の設定</h3><ol><li>本をWindowsで開き、実際の本文まで表示します。</li><li><span class="button">ウィンドウ更新</span> を押します。</li><li>本を表示しているウィンドウを選びます。</li><li><span class="button">画面範囲を選択</span> を押し、本の範囲を囲います。</li><li>ページが進む方向に合う「ページ送り」を選びます。</li></ol>
+<h3>B. 見開きの本</h3><ol><li>「見開きを中央から2ページに自動分割する」をONにします。</li><li>日本語の右開きなら <strong>右 → 左（日本語の本向け）</strong> を選びます。</li><li>横書き洋書など左開きなら <strong>左 → 右</strong> を選びます。</li></ol>
+<h3>C. ヘッダー・フッター</h3><p>範囲選択の時点で本文だけをきれいに囲めた場合、上/下のトリミングは<strong>0%</strong>でも構いません。Kindleの書名・位置表示が入る場合だけ少しずつ上げます。</p>
+<h3>D. 撮影を始める</h3><ol><li><span class="button">キャプチャ開始</span> を押します。</li><li>「開始まで○秒」の間に本へ戻ります。</li><li>途中で止めたいときは <span class="button">一時停止</span>、続けるときは <span class="button">再開</span>。</li><li>途中までをPDFにするときは <span class="button">終了してPDF作成</span>。</li><li>PDFを作らず止めるなら <span class="button">キャンセル（PDFを作らず停止）</span>。撮影済み画像は残ります。</li></ol>
+<h3>E. 撮影が終わったら</h3><p>「スクリーンショットが終了しました」と表示された後、分割・PDF・OCRは<strong>バックグラウンド</strong>で続きます。画面には「分割中」「PDF生成中」「OCR n/Nページ」などが表示されます。</p><div class="warn">後処理中にアプリを閉じようとすると、完了まで待つよう案内されます。</div></section>
+<section class="card" id="features"><h2>⑤ できること一覧</h2><ul><li>対象ウィンドウへの自動ページ送り</li><li>固定枚数キャプチャ</li><li>Smart Guardによる同一画面検出・自動停止</li><li>一時停止・再開・手動終了</li><li>見開き左右分割</li><li>日本語書籍の右→左順、洋書の左→右順</li><li>上部ヘッダー・下部フッターの割合トリミング</li><li>画像PDF</li><li>内蔵Tesseractによる日本語＋英語OCR</li><li>検索可能PDF</li><li>OCR TXT</li><li>F8 一時停止/再開、F9を2回で終了</li></ul></section>
+<section class="card" id="data"><h2>⑥ データについて</h2><p><strong>データは基本的にこのWindowsパソコンの中に保存します。</strong> OCRのために本のページを外部AIサーバーへ送る仕組みではありません。</p><p>初期保存先は通常 <strong>Downloads（ダウンロード）</strong> です。1回の撮影ごとに「保存名-日時」のフォルダができます。</p><div class="diagram">保存名-日時/<br>├ 本.pdf<br>├ 本-searchable.pdf<br>├ 本.txt<br>├ images/（元スクショ）<br>└ images-split/（見開き分割後） または images-clean/</div><p class="small">設定値はWindows側のアプリ設定として保存されるため、次回起動時にも前回の値を使えます。別のPCへ自動同期はされません。</p></section>
+<section class="card" id="mistake"><h2>⑦ 間違えたとき</h2><table class="table"><tr><th>範囲を間違えた</th><td>撮影前なら <span class="button">画面範囲を選択</span> をやり直します。</td></tr><tr><th>ページ送り方向が逆</th><td>停止して「ページ送り」を ← / → で変更します。</td></tr><tr><th>ヘッダーが残る</th><td>上部トリミングを0.5〜1%ずつ増やします。</td></tr><tr><th>本文まで切れた</th><td>上/下の割合を下げます。本文だけを範囲選択できるなら0%でもOKです。</td></tr><tr><th>途中でやめたい</th><td>途中までPDFにするなら <span class="button">終了してPDF作成</span>。PDF不要なら <span class="button">キャンセル（PDFを作らず停止）</span>。</td></tr></table></section>
+<section class="card" id="trouble"><h2>⑧ 困ったとき</h2>
+<details open><summary>電子書籍ウィンドウが一覧にない</summary><p><strong>症状：</strong>Kindleが選べない。<br><strong>原因：</strong>一覧取得前に本を開いていない、またはブラウザ名で表示されている。<br><strong>対処：</strong>本文をEdge/Chromeで開いたまま <span class="button">ウィンドウ更新</span>。本のタイトル＋Microsoft Edge / Google Chromeを選びます。</p></details>
+<details><summary>スクショが途中で切れる</summary><p><strong>対処：</strong><span class="button">画面範囲を選択</span> をやり直し、見開き全体を少し余裕を持って囲います。まず10画面でテストします。</p></details>
+<details><summary>キャプチャ終了後、OCRが長い</summary><p>v0.6.0では後処理は別スレッドです。画面の「OCR n/Nページ」を確認してください。長い本ではOCRに時間がかかりますが、Windows画面は操作できます。</p></details>
+<details><summary>OCRが失敗した</summary><p>ログに「OCR失敗」と理由が表示されます。OCRだけ失敗した場合でも、画像PDFと元画像は保存されます。OCR言語は通常 <strong>jpn+eng</strong> を使います。</p></details>
+<details><summary>見開きの順番が逆</summary><p>日本語右開きは「右 → 左」、洋書などは「左 → 右」へ変更します。</p></details>
+<details><summary>同じ画面で勝手に終わる</summary><p>ページ数が分かっているときは「固定枚数 — 指定した枚数まで必ず撮る」を使います。Smart Guardの同一画面停止を使わず、指定画面数まで進めます。</p></details>
+</section>
+<section class="card" id="phone"><h2>⑨ スマホで使う方法</h2><p><strong>キャプチャ本体はWindows専用です。</strong> 他のデスクトップ画面へページ送りキーを送る必要があるためです。</p><p>完成したPDFはOneDrive等へ移せば、iPhone/iPadから読むことができます。このマニュアル自体はスマホでも読めます。</p></section>
+<section class="card" id="terms"><h2>⑩ 用語集</h2><table class="table"><tr><th>OCR</th><td>画像の中の文字を、検索・コピーできる文字情報として読み取る処理。</td></tr><tr><th>Tesseract</th><td>Book Capture AIに内蔵している無料のOCRエンジン。</td></tr><tr><th>検索可能PDF</th><td>見た目は画像でも、文字検索できるPDF。</td></tr><tr><th>Smart Guard</th><td>前後の画面を比べ、同じ画面が続いたかなどを判定する仕組み。</td></tr><tr><th>見開き</th><td>左ページと右ページを同時に表示している状態。</td></tr><tr><th>トリミング</th><td>画像の不要な上端・下端を切り落とすこと。</td></tr></table></section>
+<section class="card" id="detail"><h2>詳しく知りたい人向け</h2><p><strong>処理構成：</strong>キャプチャはCaptureThread、キャプチャ終了後の分割・PDF生成・OCRはPostProcessThreadで実行します。重いOCR処理をGUIスレッドから分離しているため、後処理中も画面が応答する設計です。</p><p><strong>OCR：</strong>Windows配布版にはTesseract 5系と <code>jpn</code> / <code>jpn_vert</code> / <code>eng</code> を同梱しています。</p><p><strong>復旧：</strong>途中でPDF/OCRに失敗しても、元スクリーンショットを <code>images/</code> に残す設計です。</p></section>
+<a class="return" href="#top">↑ ページの先頭へ戻る</a>
+<div class="card"><strong>アプリへ戻るには：</strong> このブラウザタブを閉じ、WindowsのBook Capture AIへ戻ってください。</div>
+</main>
+</body>
+</html>
