@@ -1,35 +1,42 @@
-BOOK CAPTURE AI v0.5 - FIRST RUN
+BOOK CAPTURE AI v0.6.0 - FIRST RUN
 
-1. Open Kindle for Web / an ebook reader / browser on Windows.
-2. Run BookCaptureAI.exe.
-3. Click "ウィンドウ更新" and choose the ebook window.
-4. Click "画面範囲を選択" and drag around the whole visible book area.
-5. Choose the page-turn key (Kindle is often ← or → depending on layout).
-6. For a two-page spread, keep "見開きを中央から2ページに自動分割する" ON.
-7. Japanese books: use "右 → 左". Western/left-to-right books: use "左 → 右".
-8. Keep "上部のKindleヘッダーを除去" ON. Default 8%.
-9. Keep "下部のKindleフッターを除去" ON. Default 6%.
-10. Click "キャプチャ開始".
-11. Original screenshots always remain untouched in images/.
-12. Clean split pages are saved in images-split/.
-13. PDF / searchable PDF / OCR TXT are generated from the clean pages.
+いちばん簡単な開始方法
 
-If using a normal one-page Kindle view:
-- Turn spread split OFF.
-- Header/footer removal can remain ON.
-- Clean pages are saved in images-clean/.
+1. WindowsでKindle for Webなどを開き、本文を表示します。
+2. BookCaptureAI.exe を起動します。
+3. 「ウィンドウ更新」を押し、本を表示しているEdge/Chrome等を選びます。
+4. 「画面範囲を選択」で保存したい本文範囲を囲います。
+5. 最初は最大10画面程度で試してください。
+6. 見開きなら「見開きを中央から2ページに自動分割する」をON。
+   日本語右開き: 右 → 左
+   洋書等: 左 → 右
+7. ヘッダー/フッターを範囲選択で外せた場合は上下0%でもOKです。
+   UIが残る場合は上/下のトリミング割合を少しずつ上げます。
+8. 「画像PDFを作る」「検索可能PDFを作る」「OCRテキスト(.txt)を作る」を必要に応じてON。
+9. 「キャプチャ開始」を押します。
+10. 表示された秒数の間に電子書籍へ戻ります。
 
-OCR:
-- Tesseract OCR + Japanese/English language data are bundled.
-- No separate OCR installation is required.
-- OCR runs locally on this PC.
+撮影中
+- 「一時停止」 / 「再開」
+- F8: 一時停止 / 再開
+- F9を2回: 終了してPDF作成
+- 「キャンセル（PDFを作らず停止）」: PDF/OCRを作らず停止。撮影済み画像は残ります。
 
-Tuning:
-- If some Kindle header remains, increase the top percentage slightly.
-- If body text is cut off, decrease the top percentage.
-- If "読書速度を学習中…" or position/progress remains, increase the bottom percentage slightly.
-- Start with Top 8% / Bottom 6%.
+撮影後
+- スクリーンショットが終わると通知が出ます。
+- 分割 / PDF / OCRはバックグラウンドで続きます。
+- 画面には「分割中」「PDF生成中」「OCR n/Nページ」等が表示されます。
+- OCRだけ失敗しても、画像PDFと元スクリーンショットは残ります。
 
-Safety / rights:
-- This app does not remove DRM or bypass screenshot protection.
-- Use only for content and purposes you are authorized to copy.
+困ったら
+- アプリの「？ 使い方」を押してください。
+- manual.html を直接開いても同じマニュアルが読めます。
+
+OCR
+- Tesseract OCR + 日本語/英語モデルをWindows版に同梱しています。
+- 別途OCRソフトをインストールする必要はありません。
+- OCRはこのPCの中で処理します。
+
+Safety / rights
+- DRM解除やキャプチャ防止機能の回避は行いません。
+- 権利・利用規約で認められる範囲で使用してください。
