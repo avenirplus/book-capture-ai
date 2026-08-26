@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "title": "Book Capture AI",
+  "category": "Tools",
+  "summary": "Windows上の電子書籍画面を自動ページ送りで保存し、見開き分割・ヘッダー/フッター除去・PDF化・日本語OCRまでローカルで行うツール。",
+  "tags": ["Windows", "PDF", "OCR", "Kindle", "電子書籍", "自動キャプチャ"],
+  "color": "blue",
+  "status": "active",
+  "visibility": "public",
+  "publicUrl": "https://branzfamily01.github.io/book-capture-ai/",
+  "manualUrl": "https://branzfamily01.github.io/book-capture-ai/manual.html",
+  "repoUrl": "https://github.com/branzfamily01/book-capture-ai",
+  "platform": "Windows"
+}
