@@ -1,0 +1,70 @@
+name: Audit account Actions artifact storage
+
+on:
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Inventory retained artifacts across avenirplus repositories
+        env:
+          GH_TOKEN: ${{ github.token }}
+          OWNER: avenirplus
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json, os, subprocess
+          owner = os.environ["OWNER"]
+          def api(path):
+              result = subprocess.run(["gh","api",path], text=True, capture_output=True)
+              if result.returncode:
+                  raise RuntimeError(f"{path}: {result.stderr.strip()}")
+              return json.loads(result.stdout)
+          repos = []
+          page = 1
+          while True:
+              batch = api(f"users/{owner}/repos?per_page=100&page={page}&type=owner")
+              repos.extend(batch)
+              if len(batch) < 100: break
+              page += 1
+          print(f"REPOSITORIES_VISIBLE={len(repos)}")
+          found = []
+          errors = []
+          for repo in repos:
+              full = repo["full_name"]
+              page = 1
+              try:
+                  while True:
+                      batch = api(f"repos/{full}/actions/artifacts?per_page=100&page={page}")
+                      items = batch.get("artifacts", [])
+                      for a in items:
+                          if not a.get("expired", False):
+                              found.append((full, a))
+                      if len(items) < 100: break
+                      page += 1
+              except Exception as e:
+                  errors.append((full,str(e)))
+          total = sum(a.get("size_in_bytes",0) for _,a in found)
+          print(f"ACTIVE_ARTIFACTS={len(found)}")
+          print(f"ACTIVE_BYTES={total}")
+          print(f"ACTIVE_MIB={total/1048576:.2f}")
+          totals = {}
+          for full,a in found:
+              totals[full] = totals.get(full,0)+a.get("size_in_bytes",0)
+          print("BY_REPOSITORY (MiB):")
+          for full,n in sorted(totals.items(),key=lambda p:-p[1]):
+              print(f"  {full}: {n/1048576:.2f}")
+          print("TOP_ARTIFACTS (MiB | repo | id | name | expires):")
+          for full,a in sorted(found,key=lambda p:-p[1].get("size_in_bytes",0))[:100]:
+              print(f"  {a.get('size_in_bytes',0)/1048576:.2f} | {full} | {a['id']} | {a['name']} | {a.get('expires_at')}")
+          print(f"REPOSITORY_ERRORS={len(errors)}")
+          for full,error in errors: print(f"  ERROR {full}: {error[:200]}")
+          print("READ-ONLY AUDIT COMPLETE; NOTHING DELETED.")
+          PY
