@@ -1,0 +1,85 @@
+name: Preview and clean old Windows EXE artifacts
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "preview = list only; delete = permanently delete eligible artifacts"
+        required: true
+        type: choice
+        default: preview
+        options:
+          - preview
+          - delete
+      confirm:
+        description: "For delete mode only, enter DELETE OLD ARTIFACTS"
+        required: false
+        type: string
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Preview or delete artifacts from runs 1-49
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          MODE: ${{ inputs.mode }}
+          CONFIRM: ${{ inputs.confirm }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ "$MODE" == "delete" && "$CONFIRM" != "DELETE OLD ARTIFACTS" ]]; then
+            echo "::error::Deletion requires exact confirmation text: DELETE OLD ARTIFACTS"
+            exit 1
+          fi
+          python3 - <<'PY'
+          import json
+          import os
+          import subprocess
+
+          repo = os.environ["REPO"]
+          mode = os.environ["MODE"]
+          def api(endpoint, method="GET"):
+              cmd = ["gh", "api", "--method", method, endpoint]
+              result = subprocess.run(cmd, check=True, text=True, capture_output=True)
+              return json.loads(result.stdout) if result.stdout.strip() else {}
+
+          # The original Windows build workflow was numbered sequentially.
+          # Only delete Windows app artifacts associated with run_number <= 49.
+          # Never delete runs, source code, release assets, or artifacts from other workflows.
+          endpoint = f"repos/{repo}/actions/artifacts?per_page=100"
+          page = 1
+          eligible = []
+          while True:
+              data = api(f"{endpoint}&page={page}")
+              artifacts = data.get("artifacts", [])
+              for artifact in artifacts:
+                  name = artifact.get("name", "")
+                  if not name.startswith("Book-Capture-AI-") or not name.endswith("-Windows"):
+                      continue
+                  run_id = artifact.get("workflow_run", {}).get("id")
+                  if not run_id:
+                      continue
+                  run = api(f"repos/{repo}/actions/runs/{run_id}")
+                  if run.get("name", "").startswith("Build Windows EXE") and 1 <= int(run.get("run_number", 0)) <= 49:
+                      eligible.append((artifact, run))
+              if len(artifacts) < 100:
+                  break
+              page += 1
+          total = sum(item[0].get("size_in_bytes", 0) for item in eligible)
+          print(f"Mode: {mode}; eligible artifacts: {len(eligible)}; bytes: {total}")
+          for artifact, run in eligible:
+              print(f"#{run['run_number']} | artifact {artifact['id']} | {artifact['name']} | {artifact.get('size_in_bytes', 0)} bytes")
+          if mode == "delete":
+              for artifact, run in eligible:
+                  api(f"repos/{repo}/actions/artifacts/{artifact['id']}", "DELETE")
+                  print(f"DELETED #{run['run_number']}: {artifact['id']}")
+          else:
+              print("PREVIEW ONLY. Nothing deleted.")
+          PY
