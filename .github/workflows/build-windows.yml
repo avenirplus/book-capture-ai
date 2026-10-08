@@ -2,13 +2,6 @@ name: Build Windows EXE v0.6.0 completion release
 
 on:
   workflow_dispatch:
-  push:
-    branches: [ main ]
-    paths-ignore:
-      - ".latest-build.json"
-      - ".current-build.json"
-      - "index.html"
-      - "my-hub.json"
 
 permissions:
   contents: write
@@ -221,6 +214,7 @@ jobs:
           name: Book-Capture-AI-v0.6.0-Windows
           path: dist/BookCaptureAI/
           if-no-files-found: error
+          retention-days: 1
 
       - name: Record latest successful build run
         shell: pwsh
