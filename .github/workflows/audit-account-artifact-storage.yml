@@ -14,7 +14,7 @@ jobs:
     steps:
       - name: Inventory retained artifacts across avenirplus repositories
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.ARTIFACT_AUDIT_TOKEN || github.token }}
           OWNER: avenirplus
         shell: bash
         run: |
@@ -67,4 +67,6 @@ jobs:
           print(f"REPOSITORY_ERRORS={len(errors)}")
           for full,error in errors: print(f"  ERROR {full}: {error[:200]}")
           print("READ-ONLY AUDIT COMPLETE; NOTHING DELETED.")
+          if errors:
+              print("INCOMPLETE: GitHub Actions default token cannot read other private repositories. Add a read-only ARTIFACT_AUDIT_TOKEN secret with Actions read access to all target repositories.")
           PY
